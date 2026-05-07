@@ -12,6 +12,10 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as MachinesRouteImport } from './routes/machines'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as MachinesIdRouteImport } from './routes/machines.$id'
+import { Route as AdminMachinesRouteImport } from './routes/admin.machines'
+import { Route as AdminLoginRouteImport } from './routes/admin.login'
+import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
+import { Route as AdminCategoriesRouteImport } from './routes/admin.categories'
 
 const MachinesRoute = MachinesRouteImport.update({
   id: '/machines',
@@ -28,34 +32,92 @@ const MachinesIdRoute = MachinesIdRouteImport.update({
   path: '/$id',
   getParentRoute: () => MachinesRoute,
 } as any)
+const AdminMachinesRoute = AdminMachinesRouteImport.update({
+  id: '/admin/machines',
+  path: '/admin/machines',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin/login',
+  path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminDashboardRoute = AdminDashboardRouteImport.update({
+  id: '/admin/dashboard',
+  path: '/admin/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminCategoriesRoute = AdminCategoriesRouteImport.update({
+  id: '/admin/categories',
+  path: '/admin/categories',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/machines': typeof MachinesRouteWithChildren
+  '/admin/categories': typeof AdminCategoriesRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/machines': typeof AdminMachinesRoute
   '/machines/$id': typeof MachinesIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/machines': typeof MachinesRouteWithChildren
+  '/admin/categories': typeof AdminCategoriesRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/machines': typeof AdminMachinesRoute
   '/machines/$id': typeof MachinesIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/machines': typeof MachinesRouteWithChildren
+  '/admin/categories': typeof AdminCategoriesRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/machines': typeof AdminMachinesRoute
   '/machines/$id': typeof MachinesIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/machines' | '/machines/$id'
+  fullPaths:
+    | '/'
+    | '/machines'
+    | '/admin/categories'
+    | '/admin/dashboard'
+    | '/admin/login'
+    | '/admin/machines'
+    | '/machines/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/machines' | '/machines/$id'
-  id: '__root__' | '/' | '/machines' | '/machines/$id'
+  to:
+    | '/'
+    | '/machines'
+    | '/admin/categories'
+    | '/admin/dashboard'
+    | '/admin/login'
+    | '/admin/machines'
+    | '/machines/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/machines'
+    | '/admin/categories'
+    | '/admin/dashboard'
+    | '/admin/login'
+    | '/admin/machines'
+    | '/machines/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   MachinesRoute: typeof MachinesRouteWithChildren
+  AdminCategoriesRoute: typeof AdminCategoriesRoute
+  AdminDashboardRoute: typeof AdminDashboardRoute
+  AdminLoginRoute: typeof AdminLoginRoute
+  AdminMachinesRoute: typeof AdminMachinesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -81,6 +143,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MachinesIdRouteImport
       parentRoute: typeof MachinesRoute
     }
+    '/admin/machines': {
+      id: '/admin/machines'
+      path: '/admin/machines'
+      fullPath: '/admin/machines'
+      preLoaderRoute: typeof AdminMachinesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/dashboard': {
+      id: '/admin/dashboard'
+      path: '/admin/dashboard'
+      fullPath: '/admin/dashboard'
+      preLoaderRoute: typeof AdminDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/categories': {
+      id: '/admin/categories'
+      path: '/admin/categories'
+      fullPath: '/admin/categories'
+      preLoaderRoute: typeof AdminCategoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -99,6 +189,10 @@ const MachinesRouteWithChildren = MachinesRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   MachinesRoute: MachinesRouteWithChildren,
+  AdminCategoriesRoute: AdminCategoriesRoute,
+  AdminDashboardRoute: AdminDashboardRoute,
+  AdminLoginRoute: AdminLoginRoute,
+  AdminMachinesRoute: AdminMachinesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
