@@ -149,7 +149,7 @@ export function QuoteDialog({ trigger, defaultMachineId }: Props) {
             {errors.message && <p className="text-xs text-destructive">{errors.message}</p>}
           </div>
           <DialogFooter>
-            <Button type="submit" className="w-full gap-2">
+            <Button type="submit" className="w-full gap-2 bg-[#F5C200] text-black hover:bg-[#F5C200]/90">
               <MessageCircle className="h-4 w-4" /> Enviar Orçamento
             </Button>
           </DialogFooter>
