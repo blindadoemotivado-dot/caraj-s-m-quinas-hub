@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { supabase, type Machine, WHATSAPP_NUMBER } from "@/lib/supabase";
+import { supabase, type Machine } from "@/lib/supabase";
 import { PublicLayout } from "@/components/PublicLayout";
 import { Download, MessageCircle, ChevronLeft, Wrench } from "lucide-react";
 import { QuoteDialog } from "@/components/QuoteDialog";
