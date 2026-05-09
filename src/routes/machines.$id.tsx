@@ -1,8 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { supabase, type Machine, WHATSAPP_NUMBER } from "@/lib/supabase";
+import { supabase, type Machine } from "@/lib/supabase";
 import { PublicLayout } from "@/components/PublicLayout";
 import { Download, MessageCircle, ChevronLeft, Wrench } from "lucide-react";
+import { QuoteDialog } from "@/components/QuoteDialog";
 
 export const Route = createFileRoute("/machines/$id")({
   component: MachineDetail,
@@ -109,14 +110,14 @@ function MachineDetail() {
           )}
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMsg)}`}
-              target="_blank"
-              rel="noreferrer"
-              className="bg-primary text-primary-foreground px-6 py-3 rounded-md font-semibold flex items-center gap-2 hover:opacity-90"
-            >
-              <MessageCircle className="h-4 w-4" /> Solicitar Orçamento
-            </a>
+            <QuoteDialog
+              defaultMachineId={machine.id}
+              trigger={
+                <button className="bg-primary text-primary-foreground px-6 py-3 rounded-md font-semibold flex items-center gap-2 hover:opacity-90">
+                  <MessageCircle className="h-4 w-4" /> Solicitar Orçamento
+                </button>
+              }
+            />
             {machine.pdf_url && (
               <button onClick={handleDownload} className="bg-navy text-navy-foreground px-6 py-3 rounded-md font-semibold flex items-center gap-2 hover:opacity-90">
                 <Download className="h-4 w-4" /> Baixar Ficha Técnica (PDF)

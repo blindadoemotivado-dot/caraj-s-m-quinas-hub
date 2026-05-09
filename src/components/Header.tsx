@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import logo from "@/assets/carajas-logo.png";
+import { QuoteDialog } from "@/components/QuoteDialog";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -22,14 +23,13 @@ export function Header() {
               {l.label}
             </Link>
           ))}
-          <a
-            href="https://wa.me/5594991306843"
-            target="_blank"
-            rel="noreferrer"
-            className="bg-primary text-primary-foreground px-4 py-2 rounded-md font-semibold hover:opacity-90"
-          >
-            Solicitar Orçamento
-          </a>
+          <QuoteDialog
+            trigger={
+              <button className="bg-primary text-primary-foreground px-4 py-2 rounded-md font-semibold hover:opacity-90">
+                Solicitar Orçamento
+              </button>
+            }
+          />
         </nav>
         <button className="md:hidden" onClick={() => setOpen(!open)} aria-label="Menu">
           {open ? <X /> : <Menu />}
@@ -42,14 +42,13 @@ export function Header() {
               {l.label}
             </Link>
           ))}
-          <a
-            href="https://wa.me/5594991306843"
-            target="_blank"
-            rel="noreferrer"
-            className="bg-primary text-primary-foreground px-4 py-2 rounded-md font-semibold text-center"
-          >
-            Solicitar Orçamento
-          </a>
+          <QuoteDialog
+            trigger={
+              <button className="bg-primary text-primary-foreground px-4 py-2 rounded-md font-semibold text-center">
+                Solicitar Orçamento
+              </button>
+            }
+          />
         </nav>
       )}
     </header>
