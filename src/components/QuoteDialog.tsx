@@ -95,7 +95,7 @@ export function QuoteDialog({ trigger, defaultMachineId }: Props) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md bg-[#0D0D0D] text-white border-[#333] [&_label]:text-[#CCCCCC] [&_input]:bg-[#1A1A1A] [&_input]:border-[#333] [&_input]:text-white [&_textarea]:bg-[#1A1A1A] [&_textarea]:border-[#333] [&_textarea]:text-white [&_button[role=combobox]]:bg-[#1A1A1A] [&_button[role=combobox]]:border-[#333] [&_button[role=combobox]]:text-white">
         <DialogHeader>
           <DialogTitle>Solicitar Orçamento</DialogTitle>
           <DialogDescription>
