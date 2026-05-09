@@ -71,10 +71,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   head: () => ({
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
       { title: "Carajás Máquinas — Catálogo Técnico Digital" },
       { name: "description", content: "Catálogo técnico digital e plataforma comercial de máquinas e equipamentos pesados." },
-      { name: "theme-color", content: "#0D0D0D" },
+      { name: "theme-color", content: "#F5C200" },
+      { name: "apple-mobile-web-app-capable", content: "yes" },
+      { name: "mobile-web-app-capable", content: "yes" },
+      { name: "apple-mobile-web-app-status-bar-style", content: "black" },
+      { name: "apple-mobile-web-app-title", content: "Carajás" },
       { property: "og:title", content: "Carajás Máquinas — Catálogo Técnico Digital" },
       { property: "og:description", content: "Catálogo técnico digital e plataforma comercial de máquinas e equipamentos pesados." },
       { property: "og:type", content: "website" },
