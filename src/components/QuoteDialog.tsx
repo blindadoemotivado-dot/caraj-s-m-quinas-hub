@@ -95,10 +95,10 @@ export function QuoteDialog({ trigger, defaultMachineId }: Props) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md bg-[#0D0D0D] text-white border-[#333] [&_label]:text-[#CCCCCC] [&_input]:bg-[#1A1A1A] [&_input]:border-[#333] [&_input]:text-white [&_textarea]:bg-[#1A1A1A] [&_textarea]:border-[#333] [&_textarea]:text-white [&_button[role=combobox]]:bg-[#1A1A1A] [&_button[role=combobox]]:border-[#333] [&_button[role=combobox]]:text-white">
         <DialogHeader>
           <DialogTitle>Solicitar Orçamento</DialogTitle>
-          <DialogDescription>
+          <DialogDescription className="text-[#CCCCCC]">
             Preencha os dados abaixo e enviaremos seu pedido pelo WhatsApp.
           </DialogDescription>
         </DialogHeader>
@@ -149,7 +149,7 @@ export function QuoteDialog({ trigger, defaultMachineId }: Props) {
             {errors.message && <p className="text-xs text-destructive">{errors.message}</p>}
           </div>
           <DialogFooter>
-            <Button type="submit" className="w-full gap-2">
+            <Button type="submit" className="w-full gap-2 bg-[#F5C200] text-black hover:bg-[#F5C200]/90">
               <MessageCircle className="h-4 w-4" /> Enviar Orçamento
             </Button>
           </DialogFooter>
