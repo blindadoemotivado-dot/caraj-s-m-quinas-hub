@@ -12,3 +12,6 @@ export function PublicLayout({ children, whatsappMessage }: { children: React.Re
     </div>
   );
 }
+    </div>
+  );
+}
