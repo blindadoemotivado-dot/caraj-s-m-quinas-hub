@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+
+Sitemap: https://carajasmaquinas.lovable.app/sitemap.xml
