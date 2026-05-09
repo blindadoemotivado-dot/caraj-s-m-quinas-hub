@@ -7,6 +7,12 @@ import { QuoteDialog } from "@/components/QuoteDialog";
 
 export const Route = createFileRoute("/machines/$id")({
   component: MachineDetail,
+  head: ({ params }) => {
+    const url = `https://carajasmaquinas.lovable.app/machines/${params.id}`;
+    return {
+      links: [{ rel: "canonical", href: url }],
+    };
+  },
 });
 
 function MachineDetail() {
