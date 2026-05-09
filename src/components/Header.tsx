@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import logo from "@/assets/carajas-logo.png";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -11,13 +12,9 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 bg-navy text-navy-foreground shadow-lg">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        <Link to="/" className="flex items-center gap-2">
-          <div className="h-9 w-9 rounded-md bg-primary flex items-center justify-center font-bold text-primary-foreground">
-            CM
-          </div>
-          <div className="font-bold text-lg leading-tight">
-            Carajás <span className="text-primary">Máquinas</span>
-          </div>
+        <Link to="/" className="flex items-center gap-3">
+          <img src={logo} alt="Carajás Máquinas" className="h-10 w-auto" />
+          <span className="hidden sm:inline font-semibold text-sm text-white/70">Máquinas</span>
         </Link>
         <nav className="hidden md:flex items-center gap-6">
           {links.map((l) => (
