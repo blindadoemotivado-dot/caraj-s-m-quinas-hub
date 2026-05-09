@@ -15,16 +15,16 @@ function NotFoundComponent() {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Página não encontrada</h2>
+        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          A página que você procura não existe ou foi movida.
+          The page you're looking for doesn't exist or has been moved.
         </p>
         <div className="mt-6">
           <Link
             to="/"
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Voltar ao início
+            Go home
           </Link>
         </div>
       </div>
@@ -40,10 +40,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          Esta página não carregou
+          This page didn't load
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Algo deu errado. Tente novamente ou volte ao início.
+          Something went wrong on our end. You can try refreshing or head back home.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
@@ -53,13 +53,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
             }}
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Tentar novamente
+            Try again
           </button>
           <a
             href="/"
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
-            Início
+            Go home
           </a>
         </div>
       </div>
@@ -75,17 +75,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Carajás Máquinas — Catálogo Técnico Digital" },
       { name: "description", content: "Catálogo técnico digital e plataforma comercial de máquinas e equipamentos pesados." },
       { name: "theme-color", content: "#0D0D0D" },
-      { property: "og:title", content: "Carajás Máquinas" },
-      { property: "og:description", content: "Conheça nossa linha completa de máquinas e equipamentos." },
+      { property: "og:title", content: "Carajás Máquinas — Catálogo Técnico Digital" },
+      { property: "og:description", content: "Catálogo técnico digital e plataforma comercial de máquinas e equipamentos pesados." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Carajás Máquinas — Catálogo Técnico Digital" },
+      { name: "twitter:description", content: "Catálogo técnico digital e plataforma comercial de máquinas e equipamentos pesados." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b9bd64b4-ef1a-42be-935e-5d13b8a0b950/id-preview-1ddb9f6d--4d200b0e-a619-424e-bd00-6366b8f2e129.lovable.app-1778352206798.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b9bd64b4-ef1a-42be-935e-5d13b8a0b950/id-preview-1ddb9f6d--4d200b0e-a619-424e-bd00-6366b8f2e129.lovable.app-1778352206798.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "manifest", href: "/manifest.json" },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" },
     ],
   }),
   shellComponent: RootShell,
@@ -96,7 +97,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR">
+    <html lang="en">
       <head>
         <HeadContent />
       </head>
