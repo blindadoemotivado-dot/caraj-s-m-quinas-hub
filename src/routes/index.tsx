@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { supabase, type Machine, type Category, WHATSAPP_NUMBER } from "@/lib/supabase";
 import { PublicLayout } from "@/components/PublicLayout";
 import { ArrowRight, MessageCircle, Wrench } from "lucide-react";
+import { QuoteDialog } from "@/components/QuoteDialog";
 
 export const Route = createFileRoute("/")({
   component: Home,
