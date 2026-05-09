@@ -44,9 +44,13 @@ function Home() {
               <Link to="/machines" className="bg-primary text-primary-foreground px-6 py-3 rounded-md font-semibold flex items-center gap-2 hover:opacity-90">
                 Ver Máquinas <ArrowRight className="h-4 w-4" />
               </Link>
-              <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Olá! Gostaria de solicitar um orçamento.")}`} target="_blank" rel="noreferrer" className="bg-white text-navy px-6 py-3 rounded-md font-semibold hover:bg-white/90">
-                Solicitar Orçamento
-              </a>
+              <QuoteDialog
+                trigger={
+                  <button className="bg-white text-navy px-6 py-3 rounded-md font-semibold hover:bg-white/90">
+                    Solicitar Orçamento
+                  </button>
+                }
+              />
               <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noreferrer" className="border border-white/30 px-6 py-3 rounded-md font-semibold flex items-center gap-2 hover:bg-white/10">
                 <MessageCircle className="h-4 w-4" /> Falar no WhatsApp
               </a>
