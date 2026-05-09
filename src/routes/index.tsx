@@ -161,19 +161,27 @@ function Home() {
   );
 }
 
+const CATEGORY_IMAGES: Record<string, string> = {
+  empilhadeiras: "/categories/empilhadeiras.jpg",
+  empilhadeira: "/categories/empilhadeiras.jpg",
+  manipuladores: "/categories/manipuladores.jpg",
+  manipulador: "/categories/manipuladores.jpg",
+  "manipuladores-telescopicos": "/categories/manipuladores.jpg",
+  tratores: "/categories/tratores.jpg",
+  trator: "/categories/tratores.jpg",
+};
+
 function CategoryBg({ slug }: { slug: string }) {
-  // Use Unsplash construction/heavy machinery images keyed by slug for consistency
-  const seed = encodeURIComponent(slug || "machine");
-  const url = `https://source.unsplash.com/600x400/?heavy-machinery,construction,${seed}`;
+  const url = CATEGORY_IMAGES[slug];
+  if (!url) {
+    return <div className="absolute inset-0 bg-gradient-to-br from-[#1a1a1a] to-[#0D0D0D]" />;
+  }
   return (
     <img
       src={url}
       alt=""
       className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
       loading="lazy"
-      onError={(e) => {
-        (e.currentTarget as HTMLImageElement).style.display = "none";
-      }}
     />
   );
 }
