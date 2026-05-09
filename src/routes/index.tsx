@@ -7,12 +7,27 @@ import { QuoteDialog } from "@/components/QuoteDialog";
 
 export const Route = createFileRoute("/")({
   component: Home,
-  head: () => ({
-    meta: [
-      { title: "Carajás Máquinas — Máquinas e Equipamentos Pesados" },
-      { name: "description", content: "Conheça nossa linha completa de máquinas e equipamentos. Catálogo técnico, especificações e orçamentos." },
-    ],
-  }),
+  head: () => {
+    const title = "Carajás Máquinas | Empilhadeiras, Tratores e Manipuladores em Parauapebas-PA";
+    const description = "Catálogo técnico de máquinas pesadas para mineração, construção civil e agronegócio. Empilhadeiras, tratores e manipuladores telescópicos. Atendemos Parauapebas e todo o Brasil.";
+    const url = "https://carajasmaquinas.lovable.app";
+    const image = "https://carajasmaquinas.lovable.app/icon-512.png";
+    return {
+      meta: [
+        { title },
+        { name: "description", content: description },
+        { name: "keywords", content: "máquinas pesadas Parauapebas, empilhadeira todo terreno, trator 70hp, manipulador telescópico, máquinas mineração Pará, FCIA, Carajás Máquinas" },
+        { property: "og:title", content: "Carajás Máquinas | Equipamentos Pesados" },
+        { property: "og:description", content: "Catálogo técnico de máquinas pesadas para mineração e construção civil. Parauapebas, Pará." },
+        { property: "og:url", content: url },
+        { property: "og:image", content: image },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: description },
+        { name: "twitter:image", content: image },
+      ],
+      links: [{ rel: "canonical", href: url }],
+    };
+  },
 });
 
 function Home() {
@@ -179,7 +194,7 @@ function CategoryBg({ slug }: { slug: string }) {
   return (
     <img
       src={url}
-      alt=""
+      alt={`Categoria ${slug}`}
       className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
       loading="lazy"
     />

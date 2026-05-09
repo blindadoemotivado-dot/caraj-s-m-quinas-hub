@@ -7,12 +7,26 @@ import { Search, Wrench, ArrowRight } from "lucide-react";
 export const Route = createFileRoute("/machines")({
   component: MachinesPage,
   validateSearch: (s: Record<string, unknown>) => ({ category: (s.category as string) || "" }),
-  head: () => ({
-    meta: [
-      { title: "Máquinas e Equipamentos — Carajás Máquinas" },
-      { name: "description", content: "Catálogo completo de máquinas e equipamentos pesados." },
-    ],
-  }),
+  head: () => {
+    const title = "Catálogo de Máquinas Pesadas | Carajás Máquinas — Parauapebas-PA";
+    const description = "Catálogo completo de empilhadeiras, tratores e manipuladores telescópicos. Equipamentos para mineração, construção civil e agronegócio.";
+    const url = "https://carajasmaquinas.lovable.app/machines";
+    const image = "https://carajasmaquinas.lovable.app/icon-512.png";
+    return {
+      meta: [
+        { title },
+        { name: "description", content: description },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+        { property: "og:url", content: url },
+        { property: "og:image", content: image },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: description },
+        { name: "twitter:image", content: image },
+      ],
+      links: [{ rel: "canonical", href: url }],
+    };
+  },
 });
 
 function MachinesPage() {
