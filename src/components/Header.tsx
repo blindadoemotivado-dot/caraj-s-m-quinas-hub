@@ -42,14 +42,13 @@ export function Header() {
               {l.label}
             </Link>
           ))}
-          <a
-            href="https://wa.me/5594991306843"
-            target="_blank"
-            rel="noreferrer"
-            className="bg-primary text-primary-foreground px-4 py-2 rounded-md font-semibold text-center"
-          >
-            Solicitar Orçamento
-          </a>
+          <QuoteDialog
+            trigger={
+              <button className="bg-primary text-primary-foreground px-4 py-2 rounded-md font-semibold text-center">
+                Solicitar Orçamento
+              </button>
+            }
+          />
         </nav>
       )}
     </header>
