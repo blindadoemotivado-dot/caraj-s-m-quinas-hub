@@ -194,7 +194,7 @@ function CategoryBg({ slug }: { slug: string }) {
   return (
     <img
       src={url}
-      alt=""
+      alt={`Categoria ${slug}`}
       className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
       loading="lazy"
     />
