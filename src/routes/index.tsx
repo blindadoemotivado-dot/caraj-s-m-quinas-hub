@@ -16,7 +16,7 @@ export const Route = createFileRoute("/")({
       meta: [
         { title },
         { name: "description", content: description },
-        { name: "keywords", content: "máquinas pesadas Parauapebas, empilhadeira todo terreno, trator 70hp, manipulador telescópico, máquinas mineração Pará, FCIA, Carajás Máquinas" },
+        { name: "keywords", content: "máquinas pesadas Parauapebas, empilhadeira todo terreno, trator 70hp, manipulador telescópico, máquinas mineração Pará, ​, Carajás Máquinas" },
         { property: "og:title", content: "Carajás Máquinas | Equipamentos Pesados" },
         { property: "og:description", content: "Catálogo técnico de máquinas pesadas para mineração e construção civil. Parauapebas, Pará." },
         { property: "og:url", content: url },

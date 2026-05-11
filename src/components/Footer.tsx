@@ -11,7 +11,7 @@ export function Footer() {
           <p className="text-sm text-white/60 leading-relaxed">
             Catálogo técnico digital e plataforma comercial de máquinas e equipamentos pesados.
           </p>
-          <p className="text-xs text-white/40 mt-4 font-semibold tracking-wider">FCIA</p>
+          <p className="text-xs text-white/40 mt-4 font-semibold tracking-wider">​</p>
         </div>
         <div>
           <h4 className="font-bold mb-4 text-primary text-sm uppercase tracking-wider">Navegação</h4>
@@ -44,7 +44,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-white/10 py-5 text-center text-xs text-white/50">
-        © 2026 FCIA. Todos os direitos reservados.
+        © 2026 ​. Todos os direitos reservados.
       </div>
     </footer>
   );
