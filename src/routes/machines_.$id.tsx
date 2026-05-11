@@ -5,7 +5,7 @@ import { PublicLayout } from "@/components/PublicLayout";
 import { Download, MessageCircle, ChevronLeft, Wrench } from "lucide-react";
 import { QuoteDialog } from "@/components/QuoteDialog";
 
-export const Route = createFileRoute("/machines/$id")({
+export const Route = createFileRoute("/machines_/$id")({
   component: MachineDetail,
   head: ({ params }) => {
     const url = `https://carajasmaquinas.lovable.app/machines/${params.id}`;
