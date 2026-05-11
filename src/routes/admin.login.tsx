@@ -1,5 +1,6 @@
 import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { useState } from "react";
+import { Eye, EyeOff, X } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 
 export const Route = createFileRoute("/admin/login")({
@@ -12,6 +13,7 @@ function LoginPage() {
   const [password, setPassword] = useState("");
   const [err, setErr] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -38,7 +40,33 @@ function LoginPage() {
         </label>
         <label className="block mb-6">
           <span className="text-sm font-medium">Senha</span>
-          <input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} className="mt-1 w-full px-3 py-2 border border-input rounded-md bg-background" />
+          <div className="relative mt-1">
+            <input
+              type={showPassword ? "text" : "password"}
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full px-3 py-2 pr-20 border border-input rounded-md bg-background"
+            />
+            {password && (
+              <button
+                type="button"
+                onClick={() => setPassword("")}
+                aria-label="Limpar senha"
+                className="absolute right-10 top-1/2 -translate-y-1/2 text-[#999] hover:text-[#F5C200]"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            )}
+            <button
+              type="button"
+              onClick={() => setShowPassword((v) => !v)}
+              aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-[#999] hover:text-[#F5C200]"
+            >
+              {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+            </button>
+          </div>
         </label>
         <button disabled={loading} className="w-full bg-primary text-primary-foreground py-2.5 rounded-md font-semibold hover:opacity-90 disabled:opacity-50">
           {loading ? "Entrando..." : "Entrar"}
