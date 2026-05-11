@@ -11,7 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as MachinesRouteImport } from './routes/machines'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as MachinesIdRouteImport } from './routes/machines.$id'
+import { Route as MachinesIdRouteImport } from './routes/machines_.$id'
 import { Route as AdminMachinesRouteImport } from './routes/admin.machines'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
 import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
@@ -28,9 +28,9 @@ const IndexRoute = IndexRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const MachinesIdRoute = MachinesIdRouteImport.update({
-  id: '/$id',
-  path: '/$id',
-  getParentRoute: () => MachinesRoute,
+  id: '/machines_/$id',
+  path: '/machines/$id',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const AdminMachinesRoute = AdminMachinesRouteImport.update({
   id: '/admin/machines',
@@ -55,7 +55,7 @@ const AdminCategoriesRoute = AdminCategoriesRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/machines': typeof MachinesRouteWithChildren
+  '/machines': typeof MachinesRoute
   '/admin/categories': typeof AdminCategoriesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
@@ -64,7 +64,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/machines': typeof MachinesRouteWithChildren
+  '/machines': typeof MachinesRoute
   '/admin/categories': typeof AdminCategoriesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
@@ -74,12 +74,12 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/machines': typeof MachinesRouteWithChildren
+  '/machines': typeof MachinesRoute
   '/admin/categories': typeof AdminCategoriesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/machines': typeof AdminMachinesRoute
-  '/machines/$id': typeof MachinesIdRoute
+  '/machines_/$id': typeof MachinesIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -108,16 +108,17 @@ export interface FileRouteTypes {
     | '/admin/dashboard'
     | '/admin/login'
     | '/admin/machines'
-    | '/machines/$id'
+    | '/machines_/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  MachinesRoute: typeof MachinesRouteWithChildren
+  MachinesRoute: typeof MachinesRoute
   AdminCategoriesRoute: typeof AdminCategoriesRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminLoginRoute: typeof AdminLoginRoute
   AdminMachinesRoute: typeof AdminMachinesRoute
+  MachinesIdRoute: typeof MachinesIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -136,12 +137,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/machines/$id': {
-      id: '/machines/$id'
-      path: '/$id'
+    '/machines_/$id': {
+      id: '/machines_/$id'
+      path: '/machines/$id'
       fullPath: '/machines/$id'
       preLoaderRoute: typeof MachinesIdRouteImport
-      parentRoute: typeof MachinesRoute
+      parentRoute: typeof rootRouteImport
     }
     '/admin/machines': {
       id: '/admin/machines'
@@ -174,25 +175,14 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface MachinesRouteChildren {
-  MachinesIdRoute: typeof MachinesIdRoute
-}
-
-const MachinesRouteChildren: MachinesRouteChildren = {
-  MachinesIdRoute: MachinesIdRoute,
-}
-
-const MachinesRouteWithChildren = MachinesRoute._addFileChildren(
-  MachinesRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  MachinesRoute: MachinesRouteWithChildren,
+  MachinesRoute: MachinesRoute,
   AdminCategoriesRoute: AdminCategoriesRoute,
   AdminDashboardRoute: AdminDashboardRoute,
   AdminLoginRoute: AdminLoginRoute,
   AdminMachinesRoute: AdminMachinesRoute,
+  MachinesIdRoute: MachinesIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
